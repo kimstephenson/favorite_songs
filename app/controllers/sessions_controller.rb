@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by(username: login_params[:username])
     if user && user.authenticate(login_params[:password])
       log_in(user)
-      redirect_to songs_path
+      redirect_to root_path
     else
       render "new"
     end
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
-    redirect_to songs_path
+    redirect_to root_path
   end
 
   private
