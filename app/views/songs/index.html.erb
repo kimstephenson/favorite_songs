@@ -1,10 +1,16 @@
-<h1>Songs</h1>
+<% unless current_user %>
+  <%= link_to "Register", new_user_path %>
+  <%= link_to "Login", new_session_path %>
+<% end %>
+
+<% if current_user %>
+  <%= current_user.username %>
+  <%= link_to "Log Out", session_path(current_user.id), method: :delete %>
+<% end %>
+<h1>That's My Song!</h1>
 
 <% @songs.each do |song| %>
-  <p><%= song.title %></p>
+  <strong><%= song.title %></strong>
   <p><%= song.artist %></p>
 <% end %>
 
-<% unless current_user %>
-  <%= link_to "Register", new_user_path %>
-<% end %>

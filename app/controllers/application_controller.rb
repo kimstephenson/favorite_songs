@@ -10,8 +10,7 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-  # def logged_in?
-  #   current_user
-  # end
-
+  def log_out
+    session[:user_id] = nil
+  end
 end
